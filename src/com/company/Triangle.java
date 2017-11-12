@@ -62,9 +62,9 @@ public class Triangle {
         this.side2 = side2;
         this.side3 = side3;
 
-        this.triangle_name = side1.getPt1().getNode_name() + side2.getPt1().getNode_name() + side3.getPt2().getNode_name();
+        this.triangle_name = "T" + side1.getPt1().getNode_name() + "-" + side2.getPt1().getNode_name() + "-" + side3.getPt2().getNode_name();
 
-        Memo obj = new Memo();
+        Memo obj = Memo.getInstance();
         float a = obj.getMemoMap(this.triangle_name);
 
         if (a > 0) {
@@ -78,7 +78,7 @@ public class Triangle {
                     (this.semi_perimeter - side2.getSide_length()) *
                     (this.semi_perimeter - side3.getSide_length()));
 
-            obj.setMemoMap(this.triangle_name,this.area);
+            obj.setMemoMap(this.triangle_name, this.area);
         }
 
 

@@ -3,24 +3,30 @@ package com.company;
 import org.jfree.ui.RefineryUtilities;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
 public class Main {
 
+    public HashMap<String, Float> MemoMap;
+
     public static void main(String[] args) throws InterruptedException {
+
+        long startTime = System.currentTimeMillis();
 
         DoublyLinkedList<Integer, Integer> polyLine = new DoublyLinkedList<>();
 
-        polyLine.addFirst(1, 12, "A");
+        /*polyLine.addFirst(1, 12, "A");
         polyLine.addLast(2, 8, "B");
         polyLine.addLast(4, 6, "C");
         polyLine.addLast(9, 4, "D");
         polyLine.addLast(12, 1, "E");
-        polyLine.addLast(14, 11, "F");
+        polyLine.addLast(14, 11, "F");*/
 
-       /* polyLine.addFirst(554, 93, "1");
+        polyLine.addFirst(554, 93, "1");
         polyLine.addFirst(532, 72, "2");
         polyLine.addFirst(482, 48, "3");
         polyLine.addFirst(455, 45, "4");
@@ -61,7 +67,7 @@ public class Main {
         polyLine.addFirst(261, 479, "39");
         polyLine.addFirst(188, 488, "40");
         polyLine.addFirst(141, 493, "41");
-        polyLine.addFirst(73, 502, "42");*/
+        polyLine.addFirst(73, 502, "42");
 
         //plotPolyLine(polyLine);
         //TimeUnit.SECONDS.sleep(1);
@@ -69,26 +75,41 @@ public class Main {
         List<Triangle> triangleList = new ArrayList<>();
 
         while (polyLine.size() > 3) {
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            //System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
             polyLine.iterateForward();
 
             createTriangleList(polyLine, triangleList);
 
-            printTriangleList(triangleList);
+            //printTriangleList(triangleList);
 
             findDeletableNode(polyLine, triangleList);
             //plotPolyLine(polyLine);
 
             //Thread.sleep(250);
 
-            System.out.println();
-            System.out.println();
+            //System.out.println();
+            //System.out.println();
 
             triangleList.clear();
         }
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        //System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         polyLine.iterateForward();
+
+        /*Memo obj = Memo.getInstance();
+
+
+        for (Map.Entry<String, Float> entry : obj.MemoMap.entrySet()) {
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+        }*/
+
+        Runtime runtime = Runtime.getRuntime();
+        runtime.gc();
+
+        long stopTime = System.currentTimeMillis();
+
+        System.out.println("Program took " + (stopTime - startTime) + " milliseconds");
+        System.out.println("Used memory is " + (runtime.totalMemory() - runtime.freeMemory()) + " bytes");
 
     }
 
@@ -108,7 +129,7 @@ public class Main {
             }
         }
 
-        System.out.println("Min. Triangle: " + minTriangle.getTriangle_name());
+        //System.out.println("Min. Triangle: " + minTriangle.getTriangle_name());
 
         polyLine.removeNode(minTriangle.getSide1().getPt2().getNode_name());
     }

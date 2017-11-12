@@ -41,9 +41,9 @@ public class Side {
     public Side(Node<Integer, Integer> pt1, Node<Integer, Integer> pt2) {
         this.pt1 = pt1;
         this.pt2 = pt2;
-        this.side_name = pt1.getNode_name() + pt2.getNode_name();
+        this.side_name = "Side " + pt1.getNode_name() + pt2.getNode_name();
 
-        Memo obj = new Memo();
+        Memo obj = Memo.getInstance();
         float s = obj.getMemoMap(this.side_name);
 
         if (s > 0) {
@@ -52,7 +52,7 @@ public class Side {
         } else {
             this.side_length = (float) Math.sqrt(Math.pow((pt2.getX_coordinate() - pt1.getX_coordinate()), 2) +
                     Math.pow((pt2.getY_coordinate() - pt1.getY_coordinate()), 2));
-            obj.setMemoMap(this.side_name,this.side_length);
+            obj.setMemoMap(this.side_name, this.side_length);
         }
 
 

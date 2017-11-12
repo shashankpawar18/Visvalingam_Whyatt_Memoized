@@ -50,7 +50,7 @@ public class DoublyLinkedList<X, Y> {
             tail = tmp;
         }
         size++;
-        System.out.println("Adding: " + node_name + " (" + x_coordinate + "," + y_coordinate + ")");
+        //System.out.println("Adding: " + node_name + " (" + x_coordinate + "," + y_coordinate + ")");
     }
 
 
@@ -65,18 +65,18 @@ public class DoublyLinkedList<X, Y> {
             head = tmp;
         }
         size++;
-        System.out.println("Adding: " + node_name + " (" + x_coordinate + "," + y_coordinate + ")");
+        //System.out.println("Adding: " + node_name + " (" + x_coordinate + "," + y_coordinate + ")");
     }
 
     public void iterateForward() {
 
-        System.out.println("Head to Tail...");
+        //System.out.println("Head to Tail...");
         Node tmp = head;
         while (tmp != null) {
-            System.out.print("[" + tmp.getNode_name() + "]  ");
+            //System.out.print("[" + tmp.getNode_name() + "]  ");
             tmp = tmp.getNext();
         }
-        System.out.println();
+        //System.out.println();
     }
 
 
@@ -90,7 +90,7 @@ public class DoublyLinkedList<X, Y> {
                     head = head.getNext();
                     head.setPrev(null);
                     size--;
-                    System.out.println("Deleted Node: " + tmp.getNode_name());
+                    //System.out.println("Deleted Node: " + tmp.getNode_name());
                     break;
 
                 } else if (nodeName == start.getNode_name() && nodeName == tail.getNode_name()) {
@@ -99,7 +99,7 @@ public class DoublyLinkedList<X, Y> {
                     tail = tail.getPrev();
                     tail.setNext(null);
                     size--;
-                    System.out.println("Deleted Node: " + tmp.getNode_name());
+                    //System.out.println("Deleted Node: " + tmp.getNode_name());
                     break;
 
                 } else if (nodeName == start.getNode_name()) {//Removing any other intermediate node
@@ -112,7 +112,7 @@ public class DoublyLinkedList<X, Y> {
 
                     start.setPrev(null);
                     start.setNext(null);
-                    System.out.println("Deleted Node: " + start.getNode_name());
+                    //System.out.println("Deleted Node: " + start.getNode_name());
                     break;
 
                 } else {
